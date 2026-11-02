@@ -1,0 +1,255 @@
+{
+  "info": {
+    "_postman_id": "0e284cc7-e8f9-4adb-afd9-137a46598616",
+    "name": "Shoppers Stack",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57181908",
+    "_collection_link": "https://go.postman.co/collection/57181908-0e284cc7-e8f9-4adb-afd9-137a46598616?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Admin Profile",
+      "item": [
+        {
+          "name": "Register as a shopper",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"city\": \"Ranchi\",\r\n  \"country\": \"India\",\r\n  \"email\": \"ravi23@gmail.com\",\r\n  \"firstName\": \"Rahul\",\r\n  \"gender\": \"MALE\",\r\n  \"lastName\": \"Kumar\",\r\n  \"password\": \"@1Rahul23\",\r\n  \"phone\": 9876543210,\r\n  \"state\": \"Jharkhand\",\r\n  \"zoneId\": \"ALPHA\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://www.shoppersstack.com/shopping/shoppers",
+              "protocol": "https",
+              "host": [
+                "www",
+                "shoppersstack",
+                "com"
+              ],
+              "path": [
+                "shopping",
+                "shoppers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Shopper Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"ravi23@gmail.com\",\r\n  \"password\": \"@1Rahul23\",\r\n  \"role\": \"SHOPPER\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://www.shoppersstack.com/shopping/users/login",
+              "protocol": "https",
+              "host": [
+                "www",
+                "shoppersstack",
+                "com"
+              ],
+              "path": [
+                "shopping",
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register as Admin",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"city\": \"Jaipur\",\r\n  \"country\": \"India\",\r\n  \"createdDateTime\": \"2026-08-24T12:19:06.296Z\",\r\n  \"dob\": \"1998-05-14\",\r\n  \"email\": \"KUMAR23@gmail.com\",\r\n  \"firstName\": \"Rahul\",\r\n  \"gender\": \"MALE\",\r\n  \"lastName\": \"Sharma\",\r\n  \"password\": \"KUMAR@12345\",\r\n  \"phone\": \"9876543135\",\r\n  \"role\": \"SHOPPER\",\r\n  \"state\": \"Rajasthan\",\r\n  \"status\": \"ACTIVE\",\r\n  \"zoneId\": \"ALPHA\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://www.shoppersstack.com/shopping/admin",
+              "protocol": "https",
+              "host": [
+                "www",
+                "shoppersstack",
+                "com"
+              ],
+              "path": [
+                "shopping",
+                "admin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Admin Details by Id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Body matches string\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Rahul\");\r",
+                  "});\r",
+                  "pm.test(\"Your test name\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.statusCode).to.eql(200);\r",
+                  "});\r",
+                  "pm.test(\"Response time is less than 200ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYXZpMjNAZ21haWwuY29tIFNIT1BQRVIiLCJleHAiOjE3ODgyMDI4NzEsImlhdCI6MTc4ODE2Njg3MX0.2jm6p24-WaYimg_jaUWydUVL_m9CY8zx2mKxJTJqUxs",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://www.shoppersstack.com/shopping/admin/489542",
+              "protocol": "https",
+              "host": [
+                "www",
+                "shoppersstack",
+                "com"
+              ],
+              "path": [
+                "shopping",
+                "admin",
+                "489542"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update admin details by Id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYXZpMjNAZ21haWwuY29tIFNIT1BQRVIiLCJleHAiOjE3ODgyMDI4NzEsImlhdCI6MTc4ODE2Njg3MX0.2jm6p24-WaYimg_jaUWydUVL_m9CY8zx2mKxJTJqUxs",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"city\": \"Jaipur\",\r\n  \"country\": \"India\",\r\n  \"createdDateTime\": \"2026-08-24T12:19:06.296Z\",\r\n  \"dob\": \"1998-05-14\",\r\n  \"email\": \"raVI2456@gmail.com\",\r\n  \"firstName\": \"Rahul\",\r\n  \"gender\": \"MALE\",\r\n  \"lastName\": \"Sharma\",\r\n  \"password\": \"Rahul@12345\",\r\n  \"phone\": \"9876543135\",\r\n  \"role\": \"SHOPPER\",\r\n  \"state\": \"Rajasthan\",\r\n  \"status\": \"ACTIVE\",\r\n  \"zoneId\": \"ALPHA\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://www.shoppersstack.com/shopping/admin/489500",
+              "protocol": "https",
+              "host": [
+                "www",
+                "shoppersstack",
+                "com"
+              ],
+              "path": [
+                "shopping",
+                "admin",
+                "489500"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "TO",
+      "secret": true,
+      "source": {
+        "provider": "postman",
+        "postman": {
+          "type": "cloud",
+          "secretId": "c65d5936-1102-44cf-b6de-9eadac79acbd",
+          "vaultId": "df4eab70-b391-48ff-85fd-cb2877a719b2"
+        }
+      }
+    },
+    {
+      "key": "supabase_service_role_api_key_07s2",
+      "secret": true,
+      "source": {
+        "provider": "postman",
+        "postman": {
+          "type": "cloud",
+          "secretId": "c65d5936-1102-44cf-b6de-9eadac79acbd",
+          "vaultId": "df4eab70-b391-48ff-85fd-cb2877a719b2"
+        }
+      }
+    }
+  ]
+}
